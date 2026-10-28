@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Bootstrap Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* overriding Bootstrap defaults with my own look */
+    :root {
+      --bs-body-font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      --bs-primary: #e8590c;
+      --bs-primary-rgb: 232, 89, 12;
+      --ink: #12263a;
+    }
+    html, body { height: 100%; }
+    body {
+      min-height: 100vh;
+      color: #fff;
+      background:
+        radial-gradient(ellipse at 20% 110%, #f59f00 0%, rgba(245,159,0,0) 45%),
+        radial-gradient(ellipse at 85% 100%, #e8590c 0%, rgba(232,89,12,0) 50%),
+        linear-gradient(180deg, #0b132b 0%, #1c2e5a 45%, #5b3a8c 75%, #c2517a 100%);
+      background-attachment: fixed;
+    }
+    .navbar { background: rgba(11, 19, 43, .55); backdrop-filter: blur(6px); }
+    .navbar-brand { font-weight: 700; letter-spacing: .5px; }
+    .hero { min-height: 100vh; padding-top: 90px; padding-bottom: 40px; }
+    .hero h1 {
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1;
+      text-shadow: 0 4px 24px rgba(0,0,0,.45);
+    }
+    .hero p.lead { text-shadow: 0 2px 10px rgba(0,0,0,.5); }
+    .card {
+      border: 0;
+      border-radius: 6px;
+      color: var(--ink);
+      min-height: 150px;
+    }
+    .card .card-body { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .card-link-btn { text-decoration: none; color: inherit; cursor: pointer; display: block; }
+    .btn-primary { --bs-btn-bg: #e8590c; --bs-btn-border-color: #e8590c; --bs-btn-hover-bg: #c44a08; --bs-btn-hover-border-color: #c44a08; --bs-btn-active-bg: #a63d06; --bs-btn-active-border-color: #a63d06; }
+    .section-panel { background: rgba(11, 19, 43, .7); border-radius: 8px; padding: 2rem; }
+    .form-control:focus { border-color: #e8590c; box-shadow: 0 0 0 .2rem rgba(232,89,12,.25); }
+    .modal-content { color: var(--ink); border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#top">Shine</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header id="top" class="hero d-flex align-items-center">
+    <div class="container text-center">
+      <h1 class="mb-3">Built with<br>Bootstrap</h1>
+      <p class="lead mb-5">Weeks 3 and 4: grid, components and my own styling.</p>
+
+      <div class="row g-3 justify-content-center">
+        <div class="col-12 col-md-4">
+          <a href="#about" class="card-link-btn">
+            <div class="card h-100"><div class="card-body"><h5 class="card-title mb-0">Read a bit about me.</h5></div></div>
+          </a>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="card-link-btn" data-bs-toggle="modal" data-bs-target="#projectModal">
+            <div class="card h-100"><div class="card-body"><h5 class="card-title mb-0">See what I've built.</h5></div></div>
+          </a>
+        </div>
+        <div class="col-12 col-md-4">
+          <a href="#contact" class="card-link-btn">
+            <div class="card h-100"><div class="card-body"><h5 class="card-title mb-0">Send me a message.</h5></div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="container py-5">
+    <div class="section-panel">
+      <h2 class="mb-3">About me</h2>
+      <div class="row g-4">
+        <div class="col-12 col-lg-6">
+          <p>I'm a Software Engineering student learning to build for the web. Bootstrap's 12-column grid is why this section sits side by side on a laptop and stacks on a phone.</p>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="alert alert-warning mb-0" role="alert">
+            Resize the window to watch the columns stack.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="container pb-5">
+    <div class="section-panel">
+      <h2 class="mb-3">Projects</h2>
+      <div class="row g-3">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100"><div class="card-body text-start align-items-start">
+            <h5 class="card-title">Practice page</h5>
+            <p class="card-text">A responsive layout built from the grid and cards.</p>
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projectModal">Details</button>
+          </div></div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100"><div class="card-body text-start align-items-start">
+            <h5 class="card-title">Sign-up form</h5>
+            <p class="card-text">Bootstrap form controls restyled with my own colours.</p>
+            <a href="#contact" class="btn btn-primary btn-sm">See the form</a>
+          </div></div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="card h-100"><div class="card-body text-start align-items-start">
+            <h5 class="card-title">Landing page</h5>
+            <p class="card-text">Week 1 and 2 page, rebuilt with navbar and components.</p>
+            <button class="btn btn-outline-secondary btn-sm" disabled>Coming soon</button>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container pb-5">
+    <div class="section-panel">
+      <h2 class="mb-3">Contact me</h2>
+      <div id="sent" class="alert alert-success d-none" role="alert">Message sent. Thanks!</div>
+      <form id="contactForm">
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="col-12">
+            <label for="msg" class="form-label">Message</label>
+            <textarea class="form-control" id="msg" rows="3" required></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Send message</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Modal: extra content without leaving the page -->
+  <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">What's on this page</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          A navbar, cards, buttons, a form, an alert and this modal, all from Bootstrap, then restyled in my own CSS.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('sent').classList.remove('d-none');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
